@@ -1,6 +1,6 @@
 # Alexa Day — Portfolio
 
-Live at https://alexaday20.github.io/alexaday20/
+Live at https://adaydigital.llc
 
 - `src/` — site source (TanStack Start + Tailwind)
 - `public/media/` — photos and videos
@@ -8,4 +8,4 @@ Live at https://alexaday20.github.io/alexaday20/
 
 Rebuild after changes: `bun install && bun run build:site`
 
-Using a custom domain later: build with `SITE_BASE=/ bun run build:site`.
+Served at the custom domain adaydigital.llc (see docs/CNAME).

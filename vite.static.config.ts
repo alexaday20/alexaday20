@@ -1,8 +1,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // Static build for GitHub Pages. SITE_BASE is the folder the site lives in:
-// "/alexaday20/" on alexaday20.github.io/alexaday20, or "/" on a custom domain.
-const base = process.env.SITE_BASE ?? "/alexaday20/";
+// "/" on the custom domain adaydigital.llc ("/alexaday20/" for the bare github.io address).
+const base = process.env.SITE_BASE ?? "/";
 
 export default defineConfig({
   nitro: false,
