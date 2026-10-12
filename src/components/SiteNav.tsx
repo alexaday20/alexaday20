@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/digital-work", label: "Digital Work" },
   { to: "/strategy", label: "Strategy" },
+  { to: "/digital-work", label: "Digital Work" },
   { to: "/event-planning", label: "Event Planning" },
 ] as const;
 
@@ -34,7 +34,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t py-10 text-center">
       <a href={CONTACT_URL} target="_blank" rel="noreferrer" className="pill">
-        Let's Talk ➔
+        Let's Build Your Strategy ➔
       </a>
       <p className="mt-4 text-sm text-muted-foreground">© {new Date().getFullYear()} Alexa Day</p>
     </footer>

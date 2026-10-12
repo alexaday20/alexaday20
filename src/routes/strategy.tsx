@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CONTACT_URL } from "@/components/SiteNav";
 
 export const Route = createFileRoute("/strategy")({
   head: () => ({
@@ -22,11 +21,57 @@ const steps: [string, string][] = [
 ];
 
 const meeting = [
-  "Your goals",
-  "Your current brand identity",
-  "How we can grow your brand awareness on social",
-  "Whether the focus is pushing sales or building a general social presence",
+  "Your goals: growing brand awareness, pushing sales, or building a general social presence",
+  "Your audience, expectations, and preferences",
+  "Your current brand identity and social presence",
+  "The right content mix for you, whether that's mostly Reels, mostly posts, or a balance of both",
 ];
+
+const onboarding = [
+  "Starting content pillars: the recurring themes your content is built around",
+  "My read of your current brand: colors, fonts, tone, and visual style",
+  "The analytics behind the creative direction I recommend",
+  "Your confirmed weekly hours",
+];
+
+type Pkg = { name: string; price: string; unit: string; hours: string; items: string[] };
+const packages: Pkg[] = [
+  {
+    name: "Starter",
+    price: "$150",
+    unit: "/ week",
+    hours: "5 hours a week",
+    items: [
+      "3 finished pieces of content a week",
+      "Analytics tracking with a monthly social report",
+      "Highlight updates",
+      "On-site B-roll filming as needed",
+      "Message and comment management, optional",
+    ],
+  },
+  {
+    name: "Growth",
+    price: "$300",
+    unit: "/ week",
+    hours: "10 hours a week",
+    items: [
+      "5 finished posts a week, plus Stories",
+      "Analytics tracking with a monthly social report",
+      "Highlight updates",
+      "On-site B-roll filming as needed",
+      "Message and comment management, optional",
+    ],
+  },
+  {
+    name: "Branding",
+    price: "$100",
+    unit: "flat",
+    hours: "For new pages or a brand refresh",
+    items: ["Logo", "Brand guide", "Color palette and fonts", "Post templates", "Done before regular content begins"],
+  },
+];
+
+const piece = ["Planning", "Gathering photos and video", "Editing", "Writing the caption", "Choosing the posting time", "Posting"];
 
 function Strategy() {
   return (
@@ -53,40 +98,76 @@ function Strategy() {
       <section className="mx-auto grid max-w-6xl items-start gap-12 px-6 py-16 md:grid-cols-2 md:py-20">
         <div>
           <h2 className="text-3xl leading-tight md:text-4xl">It starts with a meeting</h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            We sit down together and establish:
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Before any content is made, we meet by phone or in person to establish:
           </p>
           <ul className="mt-4 border-t">
             {meeting.map((m) => (
-              <li key={m} className="border-b py-3 text-lg">
+              <li key={m} className="border-b py-3 text-lg leading-snug">
                 {m}
               </li>
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-6">
-          <div className="border p-7">
-            <p className="eyebrow font-semibold text-sage">Packages</p>
-            <h3 className="mt-3 text-2xl md:text-3xl">Three flexible options</h3>
-            <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-              Choose the package that fits your goals and budget. We'll find the right fit together in our first meeting.
-            </p>
-          </div>
-          <div className="border p-7">
-            <p className="eyebrow font-semibold text-sage">What Sets Me Apart</p>
-            <h3 className="mt-3 text-2xl md:text-3xl">Decisions you can trust</h3>
-            <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-              Every strategic decision is backed by analytics and research. At the end of each month, you get a social
-              report showing what's working and why, so you can feel confident in every move we make.
-            </p>
-          </div>
+        <div>
+          <h2 className="text-3xl leading-tight md:text-4xl">Then you get a plan</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Once we sign, I send you:</p>
+          <ul className="mt-4 border-t">
+            {onboarding.map((m) => (
+              <li key={m} className="border-b py-3 text-lg leading-snug">
+                {m}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="px-6 pb-16 text-center">
-        <a href={CONTACT_URL} target="_blank" rel="noreferrer" className="pill">
-          Let's Build Your Strategy ➔
-        </a>
+      <section className="border-t">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <div className="text-center">
+            <p className="eyebrow font-semibold text-sage">Packages</p>
+            <h2 className="mt-3 text-3xl leading-tight md:text-5xl">Three flexible options</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Social packages are $30 an hour and can cover Instagram, Facebook, TikTok, or all three. I post directly to
+              your page or send everything ready for you to post.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {packages.map((p) => (
+              <div key={p.name} className="flex flex-col border border-foreground/25 p-7">
+                <h3 className="text-2xl md:text-3xl">{p.name}</h3>
+                <p className="mt-1 italic text-sage">{p.hours}</p>
+                <p className="mt-5">
+                  <span className="font-display text-4xl">{p.price}</span>{" "}
+                  <span className="text-muted-foreground">{p.unit}</span>
+                </p>
+                <ul className="mt-5 flex-1 border-t">
+                  {p.items.map((it) => (
+                    <li key={it} className="border-b py-2.5 text-base leading-snug">
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
+            Every piece of content covers: {piece.join(" · ")}. Extra work outside your package is $35 an hour, always
+            approved by you first.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-t">
+        <div className="mx-auto max-w-3xl px-6 py-16 text-center md:py-20">
+          <p className="eyebrow font-semibold text-sage">What Sets Me Apart</p>
+          <h2 className="mt-3 text-3xl leading-tight md:text-5xl">Decisions you can trust</h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Every strategic decision is backed by analytics and research. At the end of each month, you get a social
+            report for each platform covering the key numbers, what performed well, what didn't, and the plan for the
+            month ahead, so you can feel confident in every move we make.
+          </p>
+        </div>
       </section>
     </div>
   );

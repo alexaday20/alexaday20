@@ -119,9 +119,14 @@ function DigitalWork() {
           ]}
           note={<>Balancing a <S>playful, laid-back personality</S> with a <S>clean-label, allergy-safe promise.</S></>}
         />
-        <div className="grid gap-4">
-          <img src={media("paradise-1.jpg")} alt="Paradise Spreads rebrand concepts: logo, jar, and social graphics" className="w-full" />
-          <img src={media("paradise-2.jpg")} alt="Paradise Spreads strawberry jar product graphic" className="w-full" />
+        <div className="grid grid-cols-[1fr_2.27fr] items-start gap-2.5 sm:gap-3">
+          <img src={media("paradise-jar.jpg")} alt="Paradise Spreads chocolate jar concept" className="w-full rounded-2xl" />
+          <img src={media("paradise-logo.jpg")} alt="Paradise Spreads logo concept" className="w-full rounded-2xl" />
+          <div className="col-span-2 grid grid-cols-[326fr_314fr] items-start gap-2.5 sm:gap-3">
+            <img src={media("paradise-tagline.jpg")} alt="The blissfully sweet, plant-based spread" className="w-full rounded-2xl" />
+            <img src={media("paradise-smoothie.jpg")} alt="Chocolate smoothie with Paradise Spread" className="w-full rounded-2xl" />
+          </div>
+          <img src={media("paradise-strawberry.jpg")} alt="Paradise Spreads strawberry jar product graphic" className="col-span-2 w-full rounded-2xl" />
         </div>
       </section>
 
