@@ -7,7 +7,7 @@ export function ProjectDetails({
   rows,
   note,
 }: {
-  title: string;
+  title: ReactNode;
   role: string;
   intro: string;
   rows: [string, string][];

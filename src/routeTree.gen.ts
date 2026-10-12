@@ -10,18 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CampaignProposalsRouteImport } from './routes/campaign-proposals'
 import { Route as DigitalWorkRouteImport } from './routes/digital-work'
 import { Route as EventPlanningRouteImport } from './routes/event-planning'
+import { Route as StrategyRouteImport } from './routes/strategy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CampaignProposalsRoute = CampaignProposalsRouteImport.update({
-  id: '/campaign-proposals',
-  path: '/campaign-proposals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DigitalWorkRoute = DigitalWorkRouteImport.update({
@@ -34,44 +29,44 @@ const EventPlanningRoute = EventPlanningRouteImport.update({
   path: '/event-planning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StrategyRoute = StrategyRouteImport.update({
+  id: '/strategy',
+  path: '/strategy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/campaign-proposals': typeof CampaignProposalsRoute
   '/digital-work': typeof DigitalWorkRoute
   '/event-planning': typeof EventPlanningRoute
+  '/strategy': typeof StrategyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/campaign-proposals': typeof CampaignProposalsRoute
   '/digital-work': typeof DigitalWorkRoute
   '/event-planning': typeof EventPlanningRoute
+  '/strategy': typeof StrategyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/campaign-proposals': typeof CampaignProposalsRoute
   '/digital-work': typeof DigitalWorkRoute
   '/event-planning': typeof EventPlanningRoute
+  '/strategy': typeof StrategyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/campaign-proposals' | '/digital-work' | '/event-planning'
+  fullPaths: '/' | '/digital-work' | '/event-planning' | '/strategy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/campaign-proposals' | '/digital-work' | '/event-planning'
-  id:
-    | '__root__'
-    | '/'
-    | '/campaign-proposals'
-    | '/digital-work'
-    | '/event-planning'
+  to: '/' | '/digital-work' | '/event-planning' | '/strategy'
+  id: '__root__' | '/' | '/digital-work' | '/event-planning' | '/strategy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CampaignProposalsRoute: typeof CampaignProposalsRoute
   DigitalWorkRoute: typeof DigitalWorkRoute
   EventPlanningRoute: typeof EventPlanningRoute
+  StrategyRoute: typeof StrategyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -81,13 +76,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/campaign-proposals': {
-      id: '/campaign-proposals'
-      path: '/campaign-proposals'
-      fullPath: '/campaign-proposals'
-      preLoaderRoute: typeof CampaignProposalsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/digital-work': {
@@ -104,14 +92,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventPlanningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/strategy': {
+      id: '/strategy'
+      path: '/strategy'
+      fullPath: '/strategy'
+      preLoaderRoute: typeof StrategyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CampaignProposalsRoute: CampaignProposalsRoute,
   DigitalWorkRoute: DigitalWorkRoute,
   EventPlanningRoute: EventPlanningRoute,
+  StrategyRoute: StrategyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -4,9 +4,9 @@ import portrait from "@/assets/portrait-cutout.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alexa Day — PR & Marketing Specialist, Oklahoma City" },
-      { name: "description", content: "Social content, short-form video, and PR campaigns that grow audiences." },
-      { property: "og:title", content: "Alexa Day — PR & Marketing Specialist" },
+      { title: "Alexa Day — Social Media & Digital Marketing, Oklahoma City" },
+      { name: "description", content: "Social content, short-form video, and social media strategy that grow audiences." },
+      { property: "og:title", content: "Alexa Day — Social Media & Digital Marketing" },
       { property: "og:description", content: "Turning creative ideas into on-brand, memorable visuals." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,7 +28,7 @@ function Index() {
           Turning creative ideas into on‑brand, <em className="font-serif text-sage">memorable</em> visuals.
         </p>
         <p className="mt-8 max-w-md text-lg leading-relaxed text-muted-foreground">
-          Social content, short-form video, and PR campaigns that grow audiences.
+          Social content, short-form video, and social media strategy that grow audiences.
         </p>
       </div>
     </section>
