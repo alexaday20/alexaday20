@@ -155,6 +155,16 @@ function Strategy() {
             Every piece of content covers: {piece.join(" · ")}. Extra work outside your package is $35 an hour, always
             approved by you first.
           </p>
+
+          <div className="mx-auto mt-10 max-w-3xl border-l-2 border-sage bg-card/60 px-7 py-6">
+            <p className="eyebrow font-semibold text-sage">Need More Than 10 Hours?</p>
+            <h3 className="mt-2 text-2xl md:text-3xl">Open to full-time roles</h3>
+            <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
+              If your team needs more than a freelance package can cover, I'm open to part-time or full-time positions,
+              including formal W-2 employment. Hours and terms are open to discussion, so reach out and we'll find what
+              fits.
+            </p>
+          </div>
         </div>
       </section>
 
