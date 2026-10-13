@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:site": "vite build --config vite.static.config.ts && rm -rf docs && cp -r dist/client docs && touch docs/.nojekyll && echo adaydigital.llc > docs/CNAME"
+    "build:site": "vite build --config vite.static.config.ts && rm -rf docs && cp -r dist/client docs && touch docs/.nojekyll && printf adaydigital.llc > docs/CNAME"
   },
   "overrides": {
     "rolldown": "1.2.1"
