@@ -5,6 +5,7 @@ const links = [
   { to: "/strategy", label: "Strategy" },
   { to: "/digital-work", label: "Digital Work" },
   { to: "/event-planning", label: "Event Planning" },
+  { to: "/work-with-me", label: "Work With Me" },
 ] as const;
 
 export function SiteNav() {

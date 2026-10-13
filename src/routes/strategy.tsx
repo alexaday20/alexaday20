@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/strategy")({
   head: () => ({
@@ -33,45 +33,6 @@ const onboarding = [
   "The analytics behind the creative direction I recommend",
   "Your confirmed weekly hours",
 ];
-
-type Pkg = { name: string; price: string; unit: string; hours: string; items: string[] };
-const packages: Pkg[] = [
-  {
-    name: "Starter",
-    price: "$150",
-    unit: "/ week",
-    hours: "5 hours a week",
-    items: [
-      "3 finished pieces of content a week",
-      "Analytics tracking with a monthly social report",
-      "Highlight updates",
-      "On-site B-roll filming as needed",
-      "Message and comment management, optional",
-    ],
-  },
-  {
-    name: "Growth",
-    price: "$300",
-    unit: "/ week",
-    hours: "10 hours a week",
-    items: [
-      "5 finished posts a week, plus Stories",
-      "Analytics tracking with a monthly social report",
-      "Highlight updates",
-      "On-site B-roll filming as needed",
-      "Message and comment management, optional",
-    ],
-  },
-  {
-    name: "Branding",
-    price: "$100",
-    unit: "flat",
-    hours: "For new pages or a brand refresh",
-    items: ["Logo", "Brand guide", "Color palette and fonts", "Post templates", "Done before regular content begins"],
-  },
-];
-
-const piece = ["Planning", "Gathering photos and video", "Editing", "Writing the caption", "Choosing the posting time", "Posting"];
 
 function Strategy() {
   return (
@@ -122,52 +83,6 @@ function Strategy() {
         </div>
       </section>
 
-      <section className="border-t">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <div className="mx-auto mb-14 max-w-3xl border-l-2 border-sage bg-card/60 px-7 py-6">
-            <p className="eyebrow font-semibold text-sage">Looking for More Than Freelance?</p>
-            <h3 className="mt-2 text-2xl md:text-3xl">Open to full-time roles</h3>
-            <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-              If your team needs more than 10 hours a week, I'm open to part-time or full-time positions,
-              including formal W-2 employment. Hours and terms are open to discussion, so reach out and we'll find what
-              fits.
-            </p>
-          </div>
-
-          <div className="text-center">
-            <p className="eyebrow font-semibold text-sage">Packages</p>
-            <h2 className="mt-3 text-3xl leading-tight md:text-5xl">Three flexible options</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Social packages are $30 an hour and can cover Instagram, Facebook, TikTok, or all three. I post directly to
-              your page or send everything ready for you to post.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {packages.map((p) => (
-              <div key={p.name} className="flex flex-col border border-foreground/25 p-7">
-                <h3 className="text-2xl md:text-3xl">{p.name}</h3>
-                <p className="mt-1 italic text-sage">{p.hours}</p>
-                <p className="mt-5">
-                  <span className="font-display text-4xl">{p.price}</span>{" "}
-                  <span className="text-muted-foreground">{p.unit}</span>
-                </p>
-                <ul className="mt-5 flex-1 border-t">
-                  {p.items.map((it) => (
-                    <li key={it} className="border-b py-2.5 text-base leading-snug">
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
-            Every piece of content covers: {piece.join(" · ")}. Extra work outside your package is $35 an hour, always
-            approved by you first.
-          </p>
-
-        </div>
-      </section>
 
       <section className="border-t">
         <div className="mx-auto max-w-3xl px-6 py-16 text-center md:py-20">
@@ -178,6 +93,9 @@ function Strategy() {
             report for each platform covering the key numbers, what performed well, what didn't, and the plan for the
             month ahead, so you can feel confident in every move we make.
           </p>
+          <Link to="/work-with-me" className="pill mt-8">
+            See Packages ➔
+          </Link>
         </div>
       </section>
     </div>

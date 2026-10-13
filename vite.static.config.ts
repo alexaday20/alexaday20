@@ -21,6 +21,6 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
     prerender: { enabled: true, crawlLinks: true, failOnError: true },
-    pages: [{ path: "/" }, { path: "/strategy" }, { path: "/digital-work" }, { path: "/event-planning" }],
+    pages: [{ path: "/" }, { path: "/strategy" }, { path: "/digital-work" }, { path: "/event-planning" }, { path: "/work-with-me" }],
   },
 });

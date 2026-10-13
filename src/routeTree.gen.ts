@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DigitalWorkRouteImport } from './routes/digital-work'
 import { Route as EventPlanningRouteImport } from './routes/event-planning'
 import { Route as StrategyRouteImport } from './routes/strategy'
+import { Route as WorkWithMeRouteImport } from './routes/work-with-me'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const StrategyRoute = StrategyRouteImport.update({
   path: '/strategy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkWithMeRoute = WorkWithMeRouteImport.update({
+  id: '/work-with-me',
+  path: '/work-with-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/digital-work': typeof DigitalWorkRoute
   '/event-planning': typeof EventPlanningRoute
   '/strategy': typeof StrategyRoute
+  '/work-with-me': typeof WorkWithMeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/digital-work': typeof DigitalWorkRoute
   '/event-planning': typeof EventPlanningRoute
   '/strategy': typeof StrategyRoute
+  '/work-with-me': typeof WorkWithMeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,21 @@ export interface FileRoutesById {
   '/digital-work': typeof DigitalWorkRoute
   '/event-planning': typeof EventPlanningRoute
   '/strategy': typeof StrategyRoute
+  '/work-with-me': typeof WorkWithMeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/digital-work' | '/event-planning' | '/strategy'
+  fullPaths:
+    '/' | '/digital-work' | '/event-planning' | '/strategy' | '/work-with-me'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/digital-work' | '/event-planning' | '/strategy'
-  id: '__root__' | '/' | '/digital-work' | '/event-planning' | '/strategy'
+  to: '/' | '/digital-work' | '/event-planning' | '/strategy' | '/work-with-me'
+  id:
+    | '__root__'
+    | '/'
+    | '/digital-work'
+    | '/event-planning'
+    | '/strategy'
+    | '/work-with-me'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +83,7 @@ export interface RootRouteChildren {
   DigitalWorkRoute: typeof DigitalWorkRoute
   EventPlanningRoute: typeof EventPlanningRoute
   StrategyRoute: typeof StrategyRoute
+  WorkWithMeRoute: typeof WorkWithMeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StrategyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work-with-me': {
+      id: '/work-with-me'
+      path: '/work-with-me'
+      fullPath: '/work-with-me'
+      preLoaderRoute: typeof WorkWithMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +131,7 @@ const rootRouteChildren: RootRouteChildren = {
   DigitalWorkRoute: DigitalWorkRoute,
   EventPlanningRoute: EventPlanningRoute,
   StrategyRoute: StrategyRoute,
+  WorkWithMeRoute: WorkWithMeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
