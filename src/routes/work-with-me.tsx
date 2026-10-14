@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { ContactButton, Expand, Reveal } from "@/components/Interactive";
 
 export const Route = createFileRoute("/work-with-me")({
   head: () => ({
@@ -14,13 +16,14 @@ export const Route = createFileRoute("/work-with-me")({
   component: WorkWithMe,
 });
 
-type Pkg = { name: string; price: string; unit: string; hours: string; items: string[] };
+type Pkg = { name: string; price: string; unit: string; hours: string; pitch: string; items: string[] };
 const packages: Pkg[] = [
   {
     name: "Starter",
     price: "$150",
     unit: "/ week",
     hours: "5 hours a week",
+    pitch: "A steady, professional presence for a growing brand.",
     items: [
       "3 finished pieces of content a week",
       "Analytics tracking with a monthly social report",
@@ -34,6 +37,7 @@ const packages: Pkg[] = [
     price: "$300",
     unit: "/ week",
     hours: "10 hours a week",
+    pitch: "More content, plus Stories, for brands ready to scale.",
     items: [
       "5 finished posts a week, plus Stories",
       "Analytics tracking with a monthly social report",
@@ -47,11 +51,49 @@ const packages: Pkg[] = [
     price: "$100",
     unit: "flat",
     hours: "For new pages or a brand refresh",
+    pitch: "A look and voice to build everything else on.",
     items: ["Logo", "Brand guide", "Color palette and fonts", "Post templates", "Done before regular content begins"],
   },
 ];
 
 const piece = ["Planning", "Gathering photos and video", "Editing", "Writing the caption", "Choosing the posting time", "Posting"];
+
+const faqs: [string, string][] = [
+  ["Do I need to sign a contract?", "Yes, a simple agreement so we both know what to expect. It runs week to week with no minimum commitment, and either of us can end it with written notice."],
+  ["Which platforms do you cover?", "Instagram, Facebook, TikTok, or all three. Content is adapted to each platform you choose, within your package hours."],
+  ["Will you post for me?", "Either way works. I can post directly to your page, or send everything finished and ready for you to post."],
+  ["How does billing work?", "Packages are invoiced every two weeks, in advance. I accept Venmo, Zelle, Cash App, cash, or check."],
+  ["Do you film on-site?", "Yes. B-roll sessions usually run 2 to 3 hours, and travel within 10 miles of Oklahoma City is included."],
+  ["What if I need more than my package?", "Extra work is $35 an hour, and I always send you an estimate to approve first. Need 10+ hours a week? I'm open to full-time roles too."],
+  ["How will I know it's working?", "At the end of each month, you get a social report for every platform: the key numbers, what performed well, what didn't, and the plan ahead."],
+];
+
+function PackageCard({ p, featured }: { p: Pkg; featured?: boolean }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`flex flex-col border p-7 transition-shadow duration-300 hover:shadow-xl ${featured ? "border-foreground bg-card/60" : "border-foreground/25"}`}>
+      <h3 className="text-2xl md:text-3xl">{p.name}</h3>
+      <p className="mt-1 italic text-sage">{p.hours}</p>
+      <p className="mt-5">
+        <span className="font-display text-4xl">{p.price}</span> <span className="text-muted-foreground">{p.unit}</span>
+      </p>
+      <p className="mt-3 text-base leading-snug text-muted-foreground">{p.pitch}</p>
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="mt-5 flex items-center justify-between border-t pt-4 text-left font-semibold">
+        <span>{open ? "Hide details" : "See what's included"}</span>
+        <span className={`grid h-7 w-7 place-items-center rounded-full border border-foreground/40 transition-transform duration-300 ${open ? "rotate-45" : ""}`}>+</span>
+      </button>
+      <div className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+        <ul className="overflow-hidden">
+          {p.items.map((it) => (
+            <li key={it} className="border-b py-2.5 text-base leading-snug first:mt-3">
+              {it}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function WorkWithMe() {
   return (
@@ -83,29 +125,37 @@ function WorkWithMe() {
               your page or send everything ready for you to post.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {packages.map((p) => (
-              <div key={p.name} className="flex flex-col border border-foreground/25 p-7">
-                <h3 className="text-2xl md:text-3xl">{p.name}</h3>
-                <p className="mt-1 italic text-sage">{p.hours}</p>
-                <p className="mt-5">
-                  <span className="font-display text-4xl">{p.price}</span>{" "}
-                  <span className="text-muted-foreground">{p.unit}</span>
-                </p>
-                <ul className="mt-5 flex-1 border-t">
-                  {p.items.map((it) => (
-                    <li key={it} className="border-b py-2.5 text-base leading-snug">
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="mt-10 grid items-start gap-5 md:grid-cols-3">
+            {packages.map((p, i) => (
+              <Reveal key={p.name} delay={i * 120}>
+                <PackageCard p={p} featured={p.name === "Growth"} />
+              </Reveal>
             ))}
           </div>
           <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
             Every piece of content covers: {piece.join(" · ")}. Extra work outside your package is $35 an hour, always
             approved by you first.
           </p>
+        </div>
+      </section>
+
+      <section className="border-t">
+        <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
+          <div className="text-center">
+            <p className="eyebrow font-semibold text-sage">FAQ</p>
+            <h2 className="mt-3 text-3xl leading-tight md:text-5xl">Good questions</h2>
+          </div>
+          <div className="mt-8 border-t">
+            {faqs.map(([q, a]) => (
+              <Expand key={q} title={q}>
+                {a}
+              </Expand>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <p className="text-muted-foreground">Still have a question?</p>
+            <ContactButton className="mt-3">Ask Me ➔</ContactButton>
+          </div>
         </div>
       </section>
 

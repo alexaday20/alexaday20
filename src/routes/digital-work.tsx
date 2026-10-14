@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ProjectDetails, S } from "@/components/ProjectDetails";
 import { IPhone, Laptop, media } from "@/components/Devices";
+import { Lightbox, Reveal } from "@/components/Interactive";
+import { useState } from "react";
 import reel1 from "@/assets/site/reel-1.mp4.asset.json";
 import reel2 from "@/assets/site/reel-2.mp4.asset.json";
 import reel1p from "@/assets/site/reel-1-poster.jpg.asset.json";
@@ -36,39 +38,71 @@ const Phone = ({ src, poster, className = "" }: { src: string; poster: string; c
   </IPhone>
 );
 
-function Gallery({ title, imgs }: { title: string; imgs: string[] }) {
+function Gallery({ title, sub, imgs }: { title: string; sub: string; imgs: { src: string; label: string }[] }) {
+  const [open, setOpen] = useState<string | null>(null);
   return (
     <section className="mx-auto max-w-7xl px-6 py-16">
-      <h2 className="mb-10 text-center text-3xl">{title}</h2>
+      <Reveal className="mb-10 text-center">
+        <h2 className="text-3xl">{title}</h2>
+        <p className="mt-2 text-muted-foreground">{sub}</p>
+      </Reveal>
       <div className="grid items-start gap-4 sm:grid-cols-3">
-        {imgs.map((u) => (
-          <img
-            key={u}
-            src={u}
-            alt=""
-            loading="lazy"
-            className={`aspect-[4/5] w-full ${u === g3.url ? "bg-specials object-contain" : "object-cover object-top"}`}
-          />
+        {imgs.map((im, i) => (
+          <Reveal key={im.src} delay={i * 120}>
+            <button type="button" onClick={() => setOpen(im.src)} className="group relative block w-full overflow-hidden text-left">
+              <img
+                src={im.src}
+                alt={im.label}
+                loading="lazy"
+                className={`aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-[1.03] ${im.src === g3.url ? "bg-specials object-contain" : "object-cover object-top"}`}
+              />
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-4 pt-12 text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {im.label} <span className="opacity-70">· tap to enlarge</span>
+              </span>
+            </button>
+          </Reveal>
         ))}
       </div>
+      <Lightbox src={open} onClose={() => setOpen(null)} />
     </section>
   );
 }
 
+const jump = [
+  ["#csa", "Cosmetic Surgery Affiliates"],
+  ["#saddle", "Saddle & Stone"],
+  ["#paradise", "Paradise Spreads"],
+  ["#mcmahon", "McMahon Foundation"],
+];
+
 function DigitalWork() {
   return (
     <div className="overflow-x-clip">
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-20">
+      <section className="mx-auto max-w-4xl px-6 pb-2 pt-16 text-center md:pt-20">
+        <p className="eyebrow text-muted-foreground">Selected Work</p>
+        <h1 className="mt-4 text-4xl leading-tight md:text-6xl">Digital Work</h1>
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          Every project starts with a real challenge. Here's how I approached each one, and what came of it.
+        </p>
+        <div className="mt-7 flex flex-wrap justify-center gap-2">
+          {jump.map(([h, l]) => (
+            <a key={h} href={h} className="rounded-full border border-foreground/30 px-4 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-foreground hover:text-background">
+              {l}
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="csa" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-20">
         <ProjectDetails
           title={<>Cosmetic<br />Surgery<br />Affiliates</>}
           role="Social Media Coordinator"
-          intro="I created and managed content across Instagram, TikTok, Facebook, and in-office displays for four surgeons and two medspa providers, in a patient-first voice that educates rather than sells."
+          chips={["+105% monthly reach", "+133% followers", "17 consultations", "17K-view Reel"]}
           rows={[
-            ["Video", "Scripted, filmed, and edited provider-led Reels, with filming guides so providers knew exactly what to capture."],
-            ["Design", "Educational carousels built within the practice's brand kit."],
-            ["Growth", "SEO-driven captions paired with comment-to-DM automation that turned engagement into consultation inquiries."],
+            ["Challenge", "Six providers, three platforms, and one person to run it all, in a field where content has to educate before it can sell."],
+            ["Approach", "Built a patient-first content system: provider-led Reels with filming guides, educational carousels in the brand kit, SEO captions, and comment-to-DM automation."],
+            ["Results", <>Monthly reach grew 105% and followers 133%. One organic campaign booked 17 consultations, and my creative direction on Dr. Smith's "This or That" Reel reached <S>17K views</S>.</>],
           ]}
-          note={<>Featured: <S>expert-led education</S> and <S>authority-driven trust.</S></>}
         />
         <div className="flex items-center justify-center gap-6 px-2 py-6 sm:gap-10">
           <Phone src={reel1.url} poster={reel1p.url} className="rotate-[5deg]" />
@@ -76,10 +110,26 @@ function DigitalWork() {
         </div>
       </section>
 
-      <Gallery title="Graphics Designed to Engage" imgs={[g1.url, g2.url, g3.url]} />
-      <Gallery title="Graphics Designed to Inform" imgs={[g4.url, g5.url, g6.url]} />
+      <Gallery
+        title="Graphics Designed to Engage"
+        sub="Scroll-stopping posts that start conversations and drive comments."
+        imgs={[
+          { src: g1.url, label: "\"Zoom in\" product tease" },
+          { src: g2.url, label: "Brand voice quote graphic" },
+          { src: g3.url, label: "Monthly specials with comment-to-DM" },
+        ]}
+      />
+      <Gallery
+        title="Graphics Designed to Inform"
+        sub="Educational carousels that answer patients' questions before they ask."
+        imgs={[
+          { src: g4.url, label: "Recovery timeline carousel" },
+          { src: g5.url, label: "Procedure results carousel" },
+          { src: g6.url, label: "Facelift technique explainer" },
+        ]}
+      />
 
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-[1.1fr_1fr] md:py-20">
+      <section id="saddle" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-[1.1fr_1fr] md:py-20">
         <div className="order-2 flex justify-center gap-5 sm:gap-8 md:order-1">
           <IPhone className="max-w-[290px]">
             <div className="flex h-full w-full items-end bg-[#dddfdc] pt-[11%]">
@@ -96,28 +146,26 @@ function DigitalWork() {
           <ProjectDetails
             title="Saddle & Stone"
             role="Freelance Social Media & Digital Content"
-            intro="Social content for an equestrian-inspired apparel and lifestyle brand, created to grow awareness, engagement, and online sales among riders and country lifestyle audiences."
+            chips={["Content pillars", "Reels", "Product graphics"]}
             rows={[
-              ["Pillars", "Built content pillars that keep the feed focused and on-brand."],
-              ["Reels", "Created Instagram Reels and product graphics in the brand's Western style."],
-              ["Engagement", "Ran audience engagement strategies, guided by performance insights."],
+              ["Challenge", "An equestrian-inspired apparel and jewelry brand needed a feed as polished and Western as its products, to reach riders and country lifestyle shoppers."],
+              ["Approach", "Built content pillars to keep every post on-brand, then created Reels and product graphics in its Western style, guided by performance insights."],
+              ["Results", <>A <S>cohesive feed</S> that brings the brand's <S>Western identity</S> to life and points shoppers to its products.</>],
             ]}
-            note={<>The result: <S>a cohesive feed</S> that brings the brand's <S>Western identity</S> to life on social.</>}
           />
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-[1fr_1.25fr] md:py-20">
+      <section id="paradise" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-[1fr_1.25fr] md:py-20">
         <ProjectDetails
           title="Paradise Spreads"
           role="Brand Rework Proposal"
-          intro="A proposed brand rework for a woman-owned, allergen-friendly, plant-based food brand from Northwest Indiana that wanted a stronger online presence and new customers beyond its home market."
+          chips={["Rebrand concepts", "Feed layout", "Messaging"]}
           rows={[
-            ["Visuals", "Reimagined the brand's tropical aesthetic for social so it feels fresh, cohesive, and scroll-stopping."],
-            ["Layout", "Rethought the layout and visual structure across the feed."],
-            ["Rebrand", "Created sample rebranding concepts to help shape the brand's messaging."],
+            ["Challenge", "A woman-owned, allergen-friendly spread brand from Northwest Indiana wanted a stronger online presence and customers beyond its home market."],
+            ["Approach", "Reimagined its tropical look for social, rethought the feed's layout, and built sample rebrand concepts to shape the messaging."],
+            ["Results", <>A proposed identity that balances a <S>playful, laid-back personality</S> with a <S>clean-label, allergy-safe promise.</S></>],
           ]}
-          note={<>Balancing a <S>playful, laid-back personality</S> with a <S>clean-label, allergy-safe promise.</S></>}
         />
         <div className="grid grid-cols-[1fr_2.27fr] items-start gap-2.5 sm:gap-3">
           <img src={media("paradise-jar.jpg")} alt="Paradise Spreads chocolate jar concept" className="w-full rounded-2xl" />
@@ -130,7 +178,7 @@ function DigitalWork() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-[1.3fr_1fr] md:py-20">
+      <section id="mcmahon" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-[1.3fr_1fr] md:py-20">
         <div className="order-2 px-[4%] md:order-1">
           <Laptop>
             <video src={mcm.url} poster={mcmp.url} controls playsInline preload="none" className="block aspect-video w-full" />
@@ -140,13 +188,12 @@ function DigitalWork() {
           <ProjectDetails
             title="McMahon Foundation"
             role="Creative Director"
-            intro="I helped lead a team to finalize the brand identity of a Lawton-based foundation that has served Southwest Oklahoma since 1940, honoring its history, values, and regional legacy."
+            chips={["Brand guide", "Video script", "Voiceover direction"]}
             rows={[
-              ["Brand", "A comprehensive brand guide built on credibility, trust, and long-term impact."],
-              ["Script", "Wrote the brand video script and directed its voiceover with a University of Oklahoma film professor."],
-              ["Production", "With no production budget, combined existing footage with on-site filming in Lawton."],
+              ["Challenge", "Finalize the brand identity of a Lawton foundation that has served Southwest Oklahoma since 1940, with no production budget."],
+              ["Approach", "Led the team on a brand guide built on trust and impact, wrote the video script, and directed its voiceover with an OU film professor, mixing existing footage with on-site filming."],
+              ["Results", <>A <S>polished brand video</S> and printed brand guide that tell the Foundation's story with one consistent voice.</>],
             ]}
-            note={<>The result: <S>a polished brand video</S> that brings the Foundation's story to life.</>}
           />
         </div>
       </section>

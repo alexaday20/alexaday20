@@ -12,7 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SiteNav, SiteFooter } from "../components/SiteNav";
+import { SiteNav, SiteFooter, MobileTalk } from "../components/SiteNav";
+import { ContactProvider } from "../components/Interactive";
 
 function NotFoundComponent() {
   return (
@@ -122,11 +123,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteNav />
-      <main>
-        <Outlet />
-      </main>
-      <SiteFooter />
+      <ContactProvider>
+        <SiteNav />
+        <main>
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <MobileTalk />
+      </ContactProvider>
     </QueryClientProvider>
   );
 }
