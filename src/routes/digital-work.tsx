@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ProjectDetails, S } from "@/components/ProjectDetails";
+import { CaseHeader, ProjectDetails, S } from "@/components/ProjectDetails";
 import { IPhone, Laptop, media } from "@/components/Devices";
 import { Lightbox, Reveal } from "@/components/Interactive";
 import { useState } from "react";
@@ -41,7 +41,7 @@ const Phone = ({ src, poster, className = "" }: { src: string; poster: string; c
 function Gallery({ title, sub, imgs }: { title: string; sub: string; imgs: { src: string; label: string }[] }) {
   const [open, setOpen] = useState<string | null>(null);
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16">
+    <section className="mx-auto max-w-6xl px-6 py-16">
       <Reveal className="mb-10 text-center">
         <h2 className="text-3xl">{title}</h2>
         <p className="mt-2 text-muted-foreground">{sub}</p>
@@ -93,11 +93,10 @@ function DigitalWork() {
         </div>
       </section>
 
-      <section id="csa" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-20">
+      <section id="csa" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-16 md:py-20">
+        <CaseHeader n="01" kind="In-House Social Media" title="Cosmetic Surgery Affiliates" tags={["Reels", "Carousels", "SEO captions", "DM automation"]} />
+        <div className="grid items-center gap-12 md:grid-cols-2">
         <ProjectDetails
-          title={<>Cosmetic<br />Surgery<br />Affiliates</>}
-          role="Social Media Coordinator"
-          chips={["+105% monthly reach", "+133% followers", "17 consultations", "17K-view Reel"]}
           rows={[
             ["Challenge", "Six providers, three platforms, and one person to run it all, in a field where content has to educate before it can sell."],
             ["Approach", "Built a patient-first content system: provider-led Reels with filming guides, educational carousels in the brand kit, SEO captions, and comment-to-DM automation."],
@@ -107,6 +106,7 @@ function DigitalWork() {
         <div className="flex items-center justify-center gap-6 px-2 py-6 sm:gap-10">
           <Phone src={reel1.url} poster={reel1p.url} className="rotate-[5deg]" />
           <Phone src={reel2.url} poster={reel2p.url} className="-rotate-[5deg]" />
+        </div>
         </div>
       </section>
 
@@ -129,7 +129,9 @@ function DigitalWork() {
         ]}
       />
 
-      <section id="saddle" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-[1.1fr_1fr] md:py-20">
+      <section id="saddle" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-16 md:py-20">
+        <CaseHeader n="02" kind="Freelance Client" title="Saddle & Stone" tags={["Content pillars", "Reels", "Product graphics"]} />
+        <div className="grid items-center gap-12 md:grid-cols-[1.1fr_1fr]">
         <div className="order-2 flex justify-center gap-5 sm:gap-8 md:order-1">
           <IPhone className="max-w-[290px]">
             <div className="flex h-full w-full items-end bg-[#dddfdc] pt-[11%]">
@@ -144,9 +146,6 @@ function DigitalWork() {
         </div>
         <div className="order-1 md:order-2">
           <ProjectDetails
-            title="Saddle & Stone"
-            role="Freelance Social Media & Digital Content"
-            chips={["Content pillars", "Reels", "Product graphics"]}
             rows={[
               ["Challenge", "An equestrian-inspired apparel and jewelry brand needed a feed as polished and Western as its products, to reach riders and country lifestyle shoppers."],
               ["Approach", "Built content pillars to keep every post on-brand, then created Reels and product graphics in its Western style, guided by performance insights."],
@@ -154,13 +153,13 @@ function DigitalWork() {
             ]}
           />
         </div>
+        </div>
       </section>
 
-      <section id="paradise" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-[1fr_1.25fr] md:py-20">
+      <section id="paradise" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-16 md:py-20">
+        <CaseHeader n="03" kind="Brand Rework Proposal" title="Paradise Spreads" tags={["Rebrand concepts", "Feed layout", "Messaging"]} />
+        <div className="grid items-center gap-12 md:grid-cols-[1fr_1.25fr]">
         <ProjectDetails
-          title="Paradise Spreads"
-          role="Brand Rework Proposal"
-          chips={["Rebrand concepts", "Feed layout", "Messaging"]}
           rows={[
             ["Challenge", "A woman-owned, allergen-friendly spread brand from Northwest Indiana wanted a stronger online presence and customers beyond its home market."],
             ["Approach", "Reimagined its tropical look for social, rethought the feed's layout, and built sample rebrand concepts to shape the messaging."],
@@ -176,9 +175,12 @@ function DigitalWork() {
           </div>
           <img src={media("paradise-strawberry.jpg")} alt="Paradise Spreads strawberry jar product graphic" className="col-span-2 w-full rounded-2xl" />
         </div>
+        </div>
       </section>
 
-      <section id="mcmahon" className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-12 px-6 py-16 md:grid-cols-[1.3fr_1fr] md:py-20">
+      <section id="mcmahon" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-16 md:py-20">
+        <CaseHeader n="04" kind="Creative Direction · Team Project" title="McMahon Foundation" tags={["Brand guide", "Video script", "Voiceover direction"]} />
+        <div className="grid items-center gap-12 md:grid-cols-[1.3fr_1fr]">
         <div className="order-2 px-[4%] md:order-1">
           <Laptop>
             <video src={mcm.url} poster={mcmp.url} controls playsInline preload="none" className="block aspect-video w-full" />
@@ -186,15 +188,13 @@ function DigitalWork() {
         </div>
         <div className="order-1 md:order-2">
           <ProjectDetails
-            title="McMahon Foundation"
-            role="Creative Director"
-            chips={["Brand guide", "Video script", "Voiceover direction"]}
             rows={[
               ["Challenge", "Finalize the brand identity of a Lawton foundation that has served Southwest Oklahoma since 1940, with no production budget."],
               ["Approach", "Led the team on a brand guide built on trust and impact, wrote the video script, and directed its voiceover with an OU film professor, mixing existing footage with on-site filming."],
               ["Results", <>A <S>polished brand video</S> and printed brand guide that tell the Foundation's story with one consistent voice.</>],
             ]}
           />
+        </div>
         </div>
       </section>
     </div>
