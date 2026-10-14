@@ -200,7 +200,7 @@ function DigitalWork() {
       </section>
 
       <section id="phillips" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-16 md:py-20">
-        <CaseHeader n="05" kind="Campaign Proposal · Team Capstone" title="Phillips 66" tags={["Influencer strategy", "UGC campaign", "Audience research"]} />
+        <CaseHeader n="05" kind="Campaign Pitch · Team Project" title="Phillips 66" tags={["Influencer strategy", "UGC campaign", "Audience research"]} />
         <div className="grid items-center gap-12 md:grid-cols-[1fr_1.1fr]">
           <ProjectDetails
             rows={[
@@ -215,11 +215,6 @@ function DigitalWork() {
               <img src={media("p66-ugc.jpg")} alt="Tactic 5: Share user-generated content" loading="lazy" className="w-full rounded-xl shadow-[0_18px_35px_-20px_rgba(0,0,0,0.5)]" />
             </Reveal>
           </div>
-        </div>
-        <div className="mt-10 text-center">
-          <a href="https://canva.link/9x1mud0j0z6sfau" target="_blank" rel="noreferrer" className="pill">
-            View Full Presentation ➔
-          </a>
         </div>
       </section>
     </div>
