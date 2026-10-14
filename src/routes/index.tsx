@@ -53,8 +53,8 @@ function Index() {
               <path id="badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
             </defs>
             <circle cx="60" cy="60" r="58" className="fill-background" />
-            <text className="fill-foreground" style={{ fontSize: "10px", fontFamily: "var(--font-serif)" }}>
-              <textPath href="#badge-circle" textLength="286" lengthAdjust="spacing">SOCIAL STRATEGY · SHORT-FORM VIDEO · CONTENT · </textPath>
+            <text className="fill-foreground" style={{ fontSize: "8.6px", fontWeight: 600, fontFamily: "var(--font-serif)" }}>
+              <textPath href="#badge-circle" textLength="286" lengthAdjust="spacing">SOCIAL STRATEGY · SHORT-FORM VIDEO · BRAND IDENTITY · </textPath>
             </text>
             <text x="60" y="68" textAnchor="middle" className="fill-sage" style={{ fontSize: "24px" }}>✦</text>
           </svg>
@@ -100,16 +100,16 @@ function Index() {
 
       {/* ABOUT */}
       <section className="relative isolate overflow-hidden">
-        <img src={media("okc-skyline.jpg")} alt="" aria-hidden="true" className="absolute inset-0 -z-20 h-full w-full object-cover object-[50%_45%] grayscale-[35%]" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-background via-background/90 to-background/75" />
+        <img src={media("okc-skyline.jpg")} alt="" aria-hidden="true" className="absolute inset-0 -z-20 h-full w-full object-cover object-[50%_45%] grayscale-[20%]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-background/90 via-background/70 to-background/55" />
         <div className="mx-auto grid max-w-6xl items-start gap-x-14 gap-y-8 px-6 py-20 md:grid-cols-2 md:py-28">
         <Reveal>
           <p className="eyebrow font-semibold text-sage">About Me</p>
-          <h2 className="mt-4 text-4xl leading-tight md:text-5xl">
+          <h2 className="mt-4 text-4xl leading-tight [text-shadow:0_1px_16px_rgba(235,235,235,0.9)] md:text-5xl">
             Rooted in Oklahoma City, built on <em className="font-serif text-sage">people.</em>
           </h2>
         </Reveal>
-        <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-foreground/80 md:pt-9">
+        <Reveal delay={120} className="space-y-5 text-lg font-semibold leading-relaxed text-foreground [text-shadow:0_1px_12px_rgba(235,235,235,0.9)] md:pt-9">
           <p>
             I'm an Oklahoma City native with a deep love for my community. I believe that when you invest in your community,
             it gives back, and that's where my passion for Oklahoma City businesses comes from.
