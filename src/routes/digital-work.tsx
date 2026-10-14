@@ -73,6 +73,13 @@ const jump = [
   ["#saddle", "Saddle & Stone"],
   ["#paradise", "Paradise Spreads"],
   ["#mcmahon", "McMahon Foundation"],
+  ["#phillips", "Phillips 66"],
+];
+
+const creators = [
+  { img: "p66-creator-1.jpg", n: "148K", p: "Instagram" },
+  { img: "p66-creator-2.jpg", n: "828K", p: "Instagram" },
+  { img: "p66-creator-3.jpg", n: "4.19M", p: "YouTube" },
 ];
 
 function DigitalWork() {
@@ -195,6 +202,42 @@ function DigitalWork() {
             ]}
           />
         </div>
+        </div>
+      </section>
+
+      <section id="phillips" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-16 md:py-20">
+        <CaseHeader n="05" kind="Campaign Proposal · Team Capstone" title="Phillips 66" tags={["Influencer strategy", "UGC campaign", "Audience research"]} />
+        <div className="grid items-start gap-12 md:grid-cols-[1fr_1.1fr]">
+          <ProjectDetails
+            rows={[
+              ["Challenge", "Phillips 66 is celebrating the Route 66 Centennial and wanted to connect the road's nostalgia with its modern brands (Phillips 66, Conoco, and 76) while driving awareness and app downloads."],
+              ["Research", <>Our survey of <S>422 travelers</S> showed convenience drives the decision: 282 said convenient locations would bring them to a Phillips 66 brand, and 116 pointed to a positive past experience.</>],
+              ["My Role", <>I created the <S>#FuelYourJourneyWithPhillips66</S> challenge: travelers post road trip content with the hashtag, top entries are featured on Phillips 66, 76, and Conoco socials, and winners earn fuel discounts. I also selected the travel creators to amplify it.</>],
+              ["Projected Results", <>Three proposed creators with a combined <S>5M+ followers</S>, user-generated content built on social proof to grow trust and engagement, and paid social across YouTube, Instagram, Facebook, and TikTok. Pitched to the Phillips 66 marketing team.</>],
+            ]}
+          />
+          <div className="flex flex-col gap-8">
+            <Reveal>
+              <p className="eyebrow mb-4 font-semibold">Proposed Creators</p>
+              <div className="grid grid-cols-3 gap-3 sm:gap-4">
+                {creators.map((c) => (
+                  <div key={c.img} className="text-center">
+                    <img src={media(c.img)} alt={`Proposed travel creator, ${c.n} followers on ${c.p}`} loading="lazy" className="aspect-[205/440] w-full rounded-[1.4rem] bg-black object-cover object-top shadow-[0_18px_35px_-18px_rgba(0,0,0,0.6)]" />
+                    <p className="mt-3 font-display text-2xl">{c.n}</p>
+                    <p className="eyebrow text-muted-foreground">{c.p}</p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <img src={media("p66-ugc.jpg")} alt="Tactic 5: Share user-generated content" loading="lazy" className="w-full rounded-xl shadow-[0_18px_35px_-20px_rgba(0,0,0,0.5)]" />
+            </Reveal>
+          </div>
+        </div>
+        <div className="mt-10 text-center">
+          <a href="https://canva.link/9x1mud0j0z6sfau" target="_blank" rel="noreferrer" className="pill">
+            View Full Presentation ➔
+          </a>
         </div>
       </section>
     </div>
