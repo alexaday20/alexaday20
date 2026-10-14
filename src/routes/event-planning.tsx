@@ -15,7 +15,7 @@ export const Route = createFileRoute("/event-planning")({
   component: EventPlanning,
 });
 
-const elements = ["Venue selection", "Food & drink", "Decor", "Vendors & partners", "Budget", "Event promotion on social"];
+const elements = ["Budget planning", "Venue sourcing", "Vendor coordination", "Catering & bar", "Décor & theme", "Invitations & RSVPs", "Timeline & run of show", "Day-of coordination", "Event promotion & social coverage"];
 
 const stats: [string, string][] = [
   ["$3K", "Budget"],
