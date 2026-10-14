@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import portrait from "@/assets/portrait-cutout.png";
 import { ContactButton, CountUp, Reveal } from "@/components/Interactive";
 import { media } from "@/components/Devices";
-import reelPoster from "@/assets/site/reel-1-poster.jpg.asset.json";
 import mcmPoster from "@/assets/site/mcmahon-poster.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -30,7 +29,7 @@ const stats = [
 const services = ["Social Media Strategy", "Short-Form Video", "Copywriting", "Brand Identity", "Content Creation", "Event Planning", "Analytics & Reporting"];
 
 const featured = [
-  { img: "", poster: true, title: "Cosmetic Surgery Affiliates", tag: "Social media · Video", href: "/digital-work#csa" },
+  { img: "saddle-2.jpg", title: "Saddle & Stone", tag: "Social content · Product graphics", href: "/digital-work#saddle" },
   { img: "paradise-strawberry.jpg", title: "Paradise Spreads", tag: "Brand rework", href: "/digital-work#paradise" },
   { img: "", mcm: true, title: "McMahon Foundation", tag: "Brand video · Creative direction", href: "/digital-work#mcmahon" },
 ];
@@ -40,25 +39,37 @@ function Index() {
   return (
     <div className="overflow-x-clip">
       {/* HERO */}
-      <section className="relative grid md:min-h-[calc(100vh-57px)] md:grid-cols-[1fr_1.05fr]">
-        <div className="relative flex items-end justify-center overflow-hidden pt-10">
-          <div className="absolute bottom-0 left-1/2 h-[88%] w-[78%] -translate-x-1/2 rounded-t-full bg-gradient-to-b from-[#c9cdbd] to-[#b7bca8]" />
-          <div className="absolute left-[8%] top-[14%] h-24 w-24 rounded-full border border-sage/50 floaty md:h-32 md:w-32" />
-          <img
-            src={portrait}
-            alt="Portrait of Alexa Day"
-            className="relative h-[56vh] w-auto max-w-none object-contain object-bottom md:h-[calc(100vh-57px-2.5rem)] md:max-h-[880px]"
-          />
+      <section className="mx-auto grid max-w-6xl items-center gap-x-14 px-6 md:min-h-[calc(100vh-57px)] md:grid-cols-2 [&>*]:min-w-0">
+        <div className="relative mt-6 flex h-[58vh] items-end justify-center self-end overflow-hidden md:mt-0 md:h-[calc(100vh-57px-3.5rem)] md:max-h-[800px] md:overflow-visible">
+          {/* arch */}
+          <div className="absolute inset-x-[8%] bottom-0 top-[8%] overflow-hidden rounded-t-full bg-gradient-to-br from-[#cdd2c0] via-[#aab195] to-[#7f8a68] md:inset-x-[3%]">
+            <div className="absolute -left-1/4 top-[18%] h-2/3 w-2/3 rounded-full bg-white/55 blur-3xl floaty" />
+            <div className="absolute -right-1/4 bottom-[10%] h-1/2 w-2/3 rounded-full bg-[#3f4a2e]/45 blur-3xl floaty [animation-delay:-3s]" />
+            <div className="absolute inset-[7%] rounded-t-full border border-white/40" />
+          </div>
+          {/* spinning badge */}
+          <svg viewBox="0 0 120 120" className="absolute left-0 top-[12%] z-10 h-20 w-20 spin-slow md:-left-4 md:h-32 md:w-32" aria-hidden="true">
+            <defs>
+              <path id="badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
+            </defs>
+            <circle cx="60" cy="60" r="58" className="fill-background" />
+            <text className="fill-foreground" style={{ fontSize: "10px", fontFamily: "var(--font-serif)" }}>
+              <textPath href="#badge-circle" textLength="286" lengthAdjust="spacing">SOCIAL MEDIA · STRATEGY · OKLAHOMA CITY · </textPath>
+            </text>
+            <text x="60" y="68" textAnchor="middle" className="fill-sage" style={{ fontSize: "24px" }}>✦</text>
+          </svg>
+          <img src={portrait} alt="Portrait of Alexa Day" className="relative z-[1] h-full w-auto max-w-none object-contain object-bottom" />
         </div>
-        <div className="flex flex-col justify-center px-7 py-10 md:px-12 md:py-14">
+
+        <div className="py-12 md:py-16">
           <p className="eyebrow text-sage">Social Media Strategist · Oklahoma City</p>
           <h1 className="mt-4 text-5xl leading-none tracking-wide text-stone lg:text-7xl">ALEXA DAY</h1>
           <p className="mt-6 font-display text-3xl leading-snug lg:text-[2.6rem] lg:leading-tight">
             Turning creative ideas into on‑brand, <em className="font-serif text-sage">memorable</em> visuals.
           </p>
-          <div className="mt-9 grid max-w-lg grid-cols-2 gap-px overflow-hidden rounded-2xl bg-foreground/15 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.45)]">
+          <div className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-foreground/15 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.45)]">
             {stats.map((s) => (
-              <div key={s.label} className="bg-card/80 px-5 py-4 backdrop-blur">
+              <div key={s.label} className="bg-card/80 px-5 py-4">
                 <div className="font-display text-4xl text-foreground lg:text-[2.75rem]">
                   <CountUp to={s.to} prefix={s.prefix} suffix={s.suffix} />
                 </div>
@@ -88,14 +99,14 @@ function Index() {
       </div>
 
       {/* ABOUT */}
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[0.9fr_1.1fr] md:py-28">
+      <section className="mx-auto grid max-w-6xl items-start gap-x-14 gap-y-8 px-6 py-20 md:grid-cols-2 md:py-28">
         <Reveal>
           <p className="eyebrow font-semibold text-sage">About Me</p>
           <h2 className="mt-4 text-4xl leading-tight md:text-5xl">
             Rooted in Oklahoma City, built on <em className="font-serif text-sage">people.</em>
           </h2>
         </Reveal>
-        <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground">
+        <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground md:pt-9">
           <p>
             I'm an Oklahoma City native with a deep love for my community. I believe that when you invest in your community,
             it gives back, and that's where my passion for Oklahoma City businesses comes from.
@@ -106,9 +117,9 @@ function Index() {
             collaborate with me in person.
           </p>
           <p>
-            I'm also not afraid to be uncomfortable. It's why I've worked in so many different spaces, from bars and event
-            planning to agencies and medical practices. Every one is a chance to meet new people and gain new experiences,
-            and every one makes my work better.
+            Working in this industry, you have to be comfortable being uncomfortable. That's why I've chosen a career that
+            lets me work in so many different spaces, from bars and event planning to agencies and medical practices. Every
+            one is a chance to meet new people and gain new experiences, and every one makes my work better.
           </p>
         </Reveal>
       </section>
@@ -127,7 +138,7 @@ function Index() {
           </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {featured.map((f, i) => {
-              const src = f.poster ? reelPoster.url : f.mcm ? mcmPoster.url : media(f.img);
+              const src = f.mcm ? mcmPoster.url : media(f.img);
               return (
                 <Reveal key={f.title} delay={i * 120}>
                   <a href={`${base}${f.href.slice(1)}`} className="group block">
