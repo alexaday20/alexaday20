@@ -54,7 +54,7 @@ function Gallery({ title, sub, imgs }: { title: string; sub: string; imgs: { src
                 src={im.src}
                 alt={im.label}
                 loading="lazy"
-                className={`aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-[1.03] ${im.src === g3.url ? "bg-specials object-contain" : "object-cover object-top"}`}
+                className={`aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-[1.03] object-cover object-top`}
               />
               <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-4 pt-12 text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {im.label} <span className="opacity-70">· tap to enlarge</span>
