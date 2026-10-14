@@ -108,3 +108,8 @@
 @utility floaty { animation: floaty 7s ease-in-out infinite; }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 @utility spin-slow { animation: spin-slow 22s linear infinite; }
+@utility pill-solid {
+  background: var(--foreground);
+  color: var(--background);
+  &:hover { background: transparent; color: var(--foreground); }
+}

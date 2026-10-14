@@ -64,8 +64,8 @@ const faqs: [string, string][] = [
   ["Do you post on my behalf?", "Yes, if you prefer. I can publish directly to your accounts or deliver finished, ready-to-post content for you to share. Access is set up however you're most comfortable, such as through Meta Business Suite, and you keep full ownership of your accounts."],
   ["Will I approve content before it goes live?", "Always. You'll have the opportunity to review content before it posts, and two rounds of revisions are included with every piece."],
   ["How does billing work?", "Packages are invoiced every two weeks, in advance, with payment due within 7 days. I accept Venmo, Zelle, Cash App, cash, or check."],
-  ["Do you film on-site?", "Yes. On-site B-roll sessions typically run 2 to 3 hours and are included in your package hours as needed. Travel within 10 miles of my Oklahoma City base is included; travel beyond that is billed at the IRS standard mileage rate."],
-  ["What if I need more than my package includes?", "Additional work is billed at $35 per hour, and I'll provide a written estimate for your approval before any work begins. For teams needing 10 or more hours a week, I'm also open to part-time or full-time roles."],
+  ["Do you film on-site?", "Yes. On-site content filming and B-roll can be included in your package hours. Travel within 10 miles of my Oklahoma City base is included; travel beyond that is billed at the IRS standard mileage rate."],
+  ["What if I need more than my package includes?", "Additional work is billed at $35 per hour, and I'll provide a written estimate for your approval before any work begins."],
   ["How will I know it's working?", "At the end of each month, you'll receive a social report for every platform covering key performance metrics, what's working, what isn't, and the plan for the month ahead."],
 ];
 
@@ -106,12 +106,12 @@ function WorkWithMe() {
 
       <section className="px-6 pb-14">
           <div className="mx-auto max-w-3xl border-l-2 border-sage bg-card/60 px-7 py-6">
-            <p className="eyebrow font-semibold text-sage">Looking for More Than Freelance?</p>
-            <h3 className="mt-2 text-2xl md:text-3xl">Open to full-time roles</h3>
+            <h3 className="text-2xl md:text-3xl">Open to part-time and full-time positions</h3>
             <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-              If your team needs more than 10 hours a week, I'm open to part-time or full-time positions,
-              including formal W-2 employment. Hours and terms are open to discussion, so reach out and we'll find what
-              fits.
+              Contact me at{" "}
+              <a href="mailto:alexaday2003@gmail.com" className="text-foreground underline decoration-sage underline-offset-4">
+                alexaday2003@gmail.com
+              </a>
             </p>
           </div>
       </section>
@@ -155,7 +155,7 @@ function WorkWithMe() {
           </div>
           <div className="mt-8 text-center">
             <p className="text-muted-foreground">Still have a question?</p>
-            <ContactButton className="mt-3">Ask Me ➔</ContactButton>
+            <ContactButton className="pill-solid mt-3">Ask Me ➔</ContactButton>
           </div>
         </div>
       </section>
@@ -165,10 +165,10 @@ function WorkWithMe() {
           <p className="eyebrow font-semibold text-sage">Add-On</p>
           <h2 className="mt-3 text-3xl leading-tight md:text-4xl">Event planning</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Have an event coming up? I can pull it together at my hourly rate, from the venue to the food, decor, and
-            vendors.
+            I source the vendors, venue, invitations, and every element of your event, working within your budget. On-site
+            management is available at my hourly rate with advance notice and a signed agreement.
           </p>
-          <Link to="/event-planning" className="pill mt-8">
+          <Link to="/event-planning" className="pill pill-solid mt-8">
             See Event Planning ➔
           </Link>
         </div>

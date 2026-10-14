@@ -78,7 +78,7 @@ function Index() {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <ContactButton className="bg-foreground text-background hover:bg-transparent hover:text-foreground">Let's Talk ➔</ContactButton>
+            <ContactButton className="pill-solid">Let's Talk ➔</ContactButton>
             <Link to="/digital-work" className="border-b border-foreground/40 pb-0.5 text-base hover:border-foreground">
               See my work
             </Link>

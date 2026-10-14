@@ -60,7 +60,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t py-12 text-center">
       <p className="font-display text-2xl md:text-3xl">Ready to grow your brand?</p>
-      <ContactButton className="mt-5" />
+      <ContactButton className="pill-solid mt-5" />
       <p className="mt-5 text-sm text-muted-foreground">© {new Date().getFullYear()} Alexa Day · Oklahoma City</p>
     </footer>
   );

@@ -31,8 +31,9 @@ function EventPlanning() {
         <p className="eyebrow text-muted-foreground">Add-On Service</p>
         <h1 className="mt-4 text-4xl leading-tight md:text-6xl">Event Planning</h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-          Don't have time to pull an event together? When you work with me on digital marketing, I can also plan your
-          event at my hourly rate, <em className="text-sage">handling the details so you don't have to.</em>
+          For companies and individuals who don't need a full-time event planner, or who have a special event coming up, I
+          gather every piece of your event: the right vendors, venue, invitations, and details,{" "}
+          <em className="text-sage">all planned within your budget.</em>
         </p>
         <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2">
           {elements.map((e) => (
@@ -41,6 +42,10 @@ function EventPlanning() {
             </li>
           ))}
         </ul>
+        <p className="mx-auto mt-8 max-w-2xl border-t border-foreground/20 pt-6 text-base leading-relaxed text-muted-foreground">
+          <span className="font-semibold text-foreground">On-site management available.</span> I can also run your event
+          day-of at my hourly rate, with advance notice and a signed agreement.
+        </p>
       </section>
 
       <section className="border-t">

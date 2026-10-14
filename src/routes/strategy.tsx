@@ -134,7 +134,7 @@ function Strategy() {
             report for each platform covering the key numbers, what performed well, what didn't, and the plan for the
             month ahead, so you can feel confident in every move we make.
           </p>
-          <Link to="/work-with-me" className="pill mt-8">
+          <Link to="/work-with-me" className="pill pill-solid mt-8">
             See Packages ➔
           </Link>
         </div>

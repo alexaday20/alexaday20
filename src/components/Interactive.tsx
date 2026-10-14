@@ -212,7 +212,7 @@ export function ContactProvider({ children }: { children: ReactNode }) {
             <textarea className={`${field} min-h-[96px] resize-none`} placeholder="What are you hoping social media can do for you?" value={msg} onChange={(e) => setMsg(e.target.value)} />
           </div>
 
-          <button type="button" onClick={send} className="pill mt-7 justify-center">
+          <button type="button" onClick={send} className="pill pill-solid mt-7 justify-center">
             Send My Note ➔
           </button>
 
