@@ -74,7 +74,7 @@ export function Expand({ title, children, defaultOpen = false, className = "" }:
         type="button"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-4 py-4 text-left text-lg"
+        className="flex w-full items-center justify-between gap-4 py-4 text-left text-lg outline-none focus-visible:underline focus-visible:decoration-sage focus-visible:underline-offset-4"
       >
         <span>{title}</span>
         <span

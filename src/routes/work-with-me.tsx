@@ -59,13 +59,14 @@ const packages: Pkg[] = [
 const piece = ["Planning", "Gathering photos and video", "Editing", "Writing the caption", "Choosing the posting time", "Posting"];
 
 const faqs: [string, string][] = [
-  ["Do I need to sign a contract?", "Yes, a simple agreement so we both know what to expect. It runs week to week with no minimum commitment, and either of us can end it with written notice."],
-  ["Which platforms do you cover?", "Instagram, Facebook, TikTok, or all three. Content is adapted to each platform you choose, within your package hours."],
-  ["Will you post for me?", "Either way works. I can post directly to your page, or send everything finished and ready for you to post."],
-  ["How does billing work?", "Packages are invoiced every two weeks, in advance. I accept Venmo, Zelle, Cash App, cash, or check."],
-  ["Do you film on-site?", "Yes. B-roll sessions usually run 2 to 3 hours, and travel within 10 miles of Oklahoma City is included."],
-  ["What if I need more than my package?", "Extra work is $35 an hour, and I always send you an estimate to approve first. Need 10+ hours a week? I'm open to full-time roles too."],
-  ["How will I know it's working?", "At the end of each month, you get a social report for every platform: the key numbers, what performed well, what didn't, and the plan ahead."],
+  ["Is there a contract?", "Yes. Every client signs a Social Media Services Agreement that outlines deliverables, timelines, and expectations for both parties. Service runs week to week with no minimum commitment. Clients may end the agreement with 30 days' written notice."],
+  ["Which platforms do you manage?", "Instagram, Facebook, and TikTok, individually or together. Content is tailored to each platform you select, within your package hours."],
+  ["Do you post on my behalf?", "Yes, if you prefer. I can publish directly to your accounts or deliver finished, ready-to-post content for you to share. Access is set up however you're most comfortable, such as through Meta Business Suite, and you keep full ownership of your accounts."],
+  ["Will I approve content before it goes live?", "Always. You'll have the opportunity to review content before it posts, and two rounds of revisions are included with every piece."],
+  ["How does billing work?", "Packages are invoiced every two weeks, in advance, with payment due within 7 days. I accept Venmo, Zelle, Cash App, cash, or check."],
+  ["Do you film on-site?", "Yes. On-site B-roll sessions typically run 2 to 3 hours and are included in your package hours as needed. Travel within 10 miles of my Oklahoma City base is included; travel beyond that is billed at the IRS standard mileage rate."],
+  ["What if I need more than my package includes?", "Additional work is billed at $35 per hour, and I'll provide a written estimate for your approval before any work begins. For teams needing 10 or more hours a week, I'm also open to part-time or full-time roles."],
+  ["How will I know it's working?", "At the end of each month, you'll receive a social report for every platform covering key performance metrics, what's working, what isn't, and the plan for the month ahead."],
 ];
 
 function PackageCard({ p, featured }: { p: Pkg; featured?: boolean }) {
@@ -78,7 +79,7 @@ function PackageCard({ p, featured }: { p: Pkg; featured?: boolean }) {
         <span className="font-display text-4xl">{p.price}</span> <span className="text-muted-foreground">{p.unit}</span>
       </p>
       <p className="mt-3 text-base leading-snug text-muted-foreground">{p.pitch}</p>
-      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="mt-5 flex items-center justify-between border-t pt-4 text-left font-semibold">
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="mt-5 flex items-center justify-between border-t pt-4 text-left font-semibold outline-none focus-visible:underline focus-visible:decoration-sage focus-visible:underline-offset-4">
         <span>{open ? "Hide details" : "See what's included"}</span>
         <span className={`grid h-7 w-7 place-items-center rounded-full border border-foreground/40 transition-transform duration-300 ${open ? "rotate-45" : ""}`}>+</span>
       </button>
@@ -143,7 +144,7 @@ function WorkWithMe() {
         <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
           <div className="text-center">
             <p className="eyebrow font-semibold text-sage">FAQ</p>
-            <h2 className="mt-3 text-3xl leading-tight md:text-5xl">Good questions</h2>
+            <h2 className="mt-3 text-3xl leading-tight md:text-5xl">Frequently asked questions</h2>
           </div>
           <div className="mt-8 border-t">
             {faqs.map(([q, a]) => (
